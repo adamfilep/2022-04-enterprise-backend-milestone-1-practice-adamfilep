@@ -1,6 +1,8 @@
 package com.codecool.library.repository;
 
 import com.codecool.library.repository.model.Book;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.List;
 public class BookDaoMem implements BookDao {
     
     private List<Book> bookList;
+    Logger log = LoggerFactory.getLogger(BookDaoMem.class);
 
     public BookDaoMem(List<Book> bookList) {
         this.bookList = bookList;
@@ -20,11 +23,13 @@ public class BookDaoMem implements BookDao {
 
     @Override
     public void addBook(Book book) {
+        log.info("Book added: " + book.getTitle());
         bookList.add(book);
     }
 
     @Override
     public List<Book> getAllBooks() {
+        log.info("Listing all books...");
         return bookList;
     }
 
@@ -36,12 +41,14 @@ public class BookDaoMem implements BookDao {
                 counter++;
             }
         }
+        log.info("Number of books in genre {} : {}", genre, counter);
         return counter;
     }
 
     @Override
     public List<Book> listBooksByWritersBirthPlace(String birthPlace) {
         List<Book> booksWithBirthPlace = new ArrayList<>();
+        log.info("Books with a writer's given birthplace: ");
         return null;
     }
 
@@ -53,6 +60,7 @@ public class BookDaoMem implements BookDao {
                 allBorrowedBooks.add(book.getTitle());
             }
         }
+        log.info("Borrowed books are : ");
         return allBorrowedBooks;
     }
 }
