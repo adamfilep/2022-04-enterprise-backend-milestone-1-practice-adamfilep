@@ -34,7 +34,7 @@ public class BookDaoMem implements BookDao {
     }
 
     @Override
-    public int numberOfBooksInGenre(String genre) {
+    public long numberOfBooksInGenre(String genre) {
         int counter = 0;
         for (Book book : bookList) {
             if (book.getGenre().equals(genre)) {
@@ -60,7 +60,7 @@ public class BookDaoMem implements BookDao {
                 allBorrowedBooks.add(book.getTitle());
             }
         }
-        log.info("Borrowed books are : ");
+        log.info("Borrowed books are : {}", allBorrowedBooks);
         return allBorrowedBooks;
     }
 }

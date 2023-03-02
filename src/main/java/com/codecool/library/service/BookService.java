@@ -23,7 +23,7 @@ public class BookService {
         return bookDao.getAllBooks();
     }
 
-    public int numberOfBooksInGenre(String genre) {
+    public long numberOfBooksInGenre(String genre) {
         return bookDao.numberOfBooksInGenre(genre);
     }
 

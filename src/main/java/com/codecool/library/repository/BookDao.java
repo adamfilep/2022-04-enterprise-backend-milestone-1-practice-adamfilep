@@ -9,7 +9,7 @@ public interface BookDao {
 
     List<Book> getAllBooks();
 
-    int numberOfBooksInGenre(String genre);
+    long numberOfBooksInGenre(String genre);
 
     List<Book> listBooksByWritersBirthPlace(String birthPlace);
 
