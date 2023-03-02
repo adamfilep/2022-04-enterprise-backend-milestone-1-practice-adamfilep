@@ -2,6 +2,7 @@ package com.codecool.library.service;
 
 import com.codecool.library.repository.BookDao;
 import com.codecool.library.repository.model.Book;
+import com.codecool.library.repository.model.Writer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +35,9 @@ public class BookService {
 
     public List<String> listAllBorrowedBooks() {
         return bookDao.listAllBorrowedBooks();
+    }
+
+    public void addWriter(Writer writer) {
+        bookDao.addWriter(writer);
     }
 }

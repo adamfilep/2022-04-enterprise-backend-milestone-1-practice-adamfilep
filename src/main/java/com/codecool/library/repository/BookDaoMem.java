@@ -1,6 +1,7 @@
 package com.codecool.library.repository;
 
 import com.codecool.library.repository.model.Book;
+import com.codecool.library.repository.model.Writer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,7 @@ import java.util.List;
 public class BookDaoMem implements BookDao {
     
     private List<Book> bookList;
+    private List<Writer> writerList = new ArrayList<>();
     Logger log = LoggerFactory.getLogger(BookDaoMem.class);
 
     public BookDaoMem(List<Book> bookList) {
@@ -49,7 +51,14 @@ public class BookDaoMem implements BookDao {
     public List<Book> listBooksByWritersBirthPlace(String birthPlace) {
         List<Book> booksWithBirthPlace = new ArrayList<>();
         log.info("Books with a writer's given birthplace: ");
-        return null;
+        Writer writer = null;
+        for (Book book : bookList) {
+            writer = getWriterByName(book.getWriterName());
+            if (writer.getBirthPlace().equals(birthPlace)) {
+                booksWithBirthPlace.add(book);
+            }
+        }
+        return booksWithBirthPlace;
     }
 
     @Override
@@ -62,5 +71,19 @@ public class BookDaoMem implements BookDao {
         }
         log.info("Borrowed books are : {}", allBorrowedBooks);
         return allBorrowedBooks;
+    }
+
+    @Override
+    public void addWriter(Writer writer) {
+        writerList.add(writer);
+    }
+
+    public Writer getWriterByName(String name) {
+        for (Writer writer : writerList) {
+            if (writer.getName().equals(name)) {
+                return writer;
+            }
+        }
+        return null;
     }
 }

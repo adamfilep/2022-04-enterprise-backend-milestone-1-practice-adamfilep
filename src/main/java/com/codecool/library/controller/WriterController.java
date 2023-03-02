@@ -16,7 +16,7 @@ public class WriterController {
         this.writerService = writerService;
     }
 
-    @PostMapping("/writer")
+    @PostMapping()
     public void addWriter(@RequestBody Writer writer) {
         writerService.addWriter(writer);
     }
