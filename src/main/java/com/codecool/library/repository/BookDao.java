@@ -9,8 +9,6 @@ public interface BookDao {
 
     List<Book> getAllBooks();
 
-    Book findBookById(int id);
-
     int numberOfBooksInGenre(String genre);
 
     List<Book> listBooksByWritersBirthPlace(String birthPlace);

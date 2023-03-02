@@ -16,7 +16,7 @@ public class WriterDaoMem implements WriterDao {
     }
 
     public WriterDaoMem() {
-        this.writerList = new ArrayList<>();
+        writerList = new ArrayList<>();
     }
 
     @Override
